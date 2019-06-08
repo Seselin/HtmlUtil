@@ -1,0 +1,151 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>市场分析</title>
+	<link rel="shortcut icon" href="./img/app-logo.png" type="image/x-icon" />
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<style type="text/css">
+		body {
+			display: flex;
+			flex-direction: column;
+			margin-top: 100px;
+			margin-left: 200px;
+		}
+	</style>
+
+	<script>
+		function loadData() {
+			loadTaobao1()
+			loadTaobao2()
+			loadFlow()
+			loadBaidu()
+		}
+
+		function loadTaobao1() {
+			if (!checkInput()) {
+				return
+			}
+			var inputStr = text_input.value
+			window.open("https://s.taobao.com/search?q=" + inputStr);
+		}
+
+		function loadTaobao2() {
+			if (!checkInput()) {
+				return
+			}
+			var inputStr = text_input.value
+			window.open("https://s.taobao.com/search?q=" + inputStr + "&s=44");
+		}
+
+		function loadFlow() {
+			if (!checkInput()) {
+				return
+			}
+			var inputStr = text_input.value
+			window.open("https://subway.simba.taobao.com/#!/tools/insight/queryresult?kws=" + inputStr);
+		}
+
+		function loadjd() {
+			if (!checkInput()) {
+				return
+			}
+			var inputStr = text_input.value
+			window.open("https://search.jd.com/Search?keyword=" + inputStr + "&enc=utf-8");
+		}
+
+		function loadBaidu() {
+			if (!checkInput()) {
+				return
+			}
+			var inputStr = text_input.value
+			window.open("http://index.baidu.com/v2/main/index.html#/trend/" + inputStr);
+		}
+
+		function checkInput() {
+			var inputStr = text_input.value
+			inputStr = inputStr.trim();
+			if (inputStr != null && inputStr.length > 0) {
+				document.getElementById("notice").innerHTML = " "
+				return true
+			} else {
+				document.getElementById("notice").innerHTML = "产品关键字不能为空！"
+				return false
+			}
+		}
+
+		function clearText() {
+			document.getElementById("text_input").value = ""
+		}
+
+		function loadAli() {
+			window.open("http://index.1688.com/");
+		}
+
+		function load1688() {
+			window.open("https://www.1688.com/");
+		}
+
+		function loadsycm() {
+			window.open("https://sycm.taobao.com/mc/mq/market_rank");
+		}
+
+		function loadZOL() {
+			if (!checkInput()) {
+				return
+			}
+			var inputStr = text_input.value
+			var url = "http://detail.zol.com.cn/index.php?c=SearchList&keyword=" + inputStr;
+			window.open(url);
+		}
+
+		function loadTest() {
+			if (!checkInput()) {
+				return
+			}
+			var inputStr = text_input.value
+			var url = "http://detail.zol.com.cn/index.php?c=SearchList&keyword=" + inputStr;
+			window.open(url);
+		}
+	</script>
+
+</head>
+
+<body>
+
+	<div>
+		<input id="text_input" placeholder="请输入产品关键字" required></input>
+		<button onclick="clearText() ">清空</button>
+		<!-- <button onclick="loadTest() ">测试按钮</button> -->
+	</div>
+
+	<p id="notice"></p>
+
+	<div>
+		<button onclick="loadTaobao1()">淘宝第一页</button>
+		<button onclick="loadTaobao2()">淘宝第二页</button>
+		<button onclick="loadFlow()">流量解析</button>
+		<button onclick="loadjd()">京东搜索</button>
+		<button onclick="loadBaidu()">百度指数</button>
+		<button onclick="loadZOL()">ZOL搜索</button>
+	</div>
+
+	<!-- <div>
+		<button onclick="loadData() ">批量加载</button>
+	</div> -->
+
+	<ul class="module-tabs">
+		<li class="current">推荐网址</li>
+	</ul>
+
+	<div>
+		<button onclick="loadAli()">阿里指数</button>
+		<button onclick="load1688()">1688官网</button>
+		<button onclick="loadsycm()">生意参谋</button>
+	</div>
+
+</body>
+
+</html>
